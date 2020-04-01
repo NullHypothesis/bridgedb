@@ -116,9 +116,9 @@ BridgeDB should work with or without a Python virtualenv.
 -  Install Pip 1.3.1 or later. Debian has this version, but if for some
    reason that or a newer version isn't available, the easiest way to
    install a newer Pip is to use the Pip development teams's `getpip
-   script <https://raw.github.com/pypa/pip/master/contrib/get-pip.py>`__::
+   script <https://bootstrap.pypa.io/get-pip.py>`__::
 
-         wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+         wget https://bootstrap.pypa.io/get-pip.py
          sudo python get-pip.py
 
 
