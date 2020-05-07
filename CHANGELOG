@@ -1,3 +1,7 @@
+    * FIXES https://bugs.torproject.org/33945
+    This patch fixes a bug that caused the email autoresponder to fail after
+    a while.
+
     * FIXES https://bugs.torproject.org/31528
     BridgeDB's UI uses a bunch of obscure "chatspeak" references in its UI.  One
     example is that it responds with "Uh oh, spaghettios!" if there are
