@@ -1,15 +1,16 @@
-# Translations template for BridgeDB.
-# Copyright (C) 2015 'The Tor Project, Inc.'
-# This file is distributed under the same license as the BridgeDB project.
+# Translations template for bridgedb.
+# Copyright (C) 2020 'The Tor Project, Inc.'
+# This file is distributed under the same license as the bridgedb project.
 # 
 # Translators:
-# Translators:
 # arashaalaei <aalaeiarash@gmail.com>, 2011
+# Ali A, 2019
 # signal89, 2014
 # Amir Moezzi <amirreza.mz@yahoo.com>, 2017
 # ardeshir, 2013
 # Ehsan Ab <a.ehsan70@gmail.com>, 2015
 # NoProfile, 2014-2015
+# Hamid reza Zaefarani, 2019-2020
 # johnholzer <johnholtzer123@gmail.com>, 2014
 # Mehrad Rousta <mehrad77@gmail.com>, 2018
 # Mohammad Hossein <desmati@gmail.com>, 2014
@@ -17,149 +18,166 @@
 # perspolis <rezarms@yahoo.com>, 2011
 # masoudd <relive.mn@gmail.com>, 2018
 # Setareh <setareh.salehee@gmail.com>, 2014
+# Seyyed Hossein Darvari <xhdix@yahoo.com>, 2020
+# Vox, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Tor Project\n"
 "Report-Msgid-Bugs-To: 'https://trac.torproject.org/projects/tor/newticket?component=BridgeDB&keywords=bridgedb-reported,msgid&cc=isis,sysrqb&owner=isis'\n"
-"POT-Creation-Date: 2015-07-25 03:40+0000\n"
-"PO-Revision-Date: 2019-08-17 08:33+0000\n"
-"Last-Translator: MYZJ\n"
+"POT-Creation-Date: 2020-05-14 14:21-0700\n"
+"PO-Revision-Date: 2020-05-15 15:15+0000\n"
+"Last-Translator: Seyyed Hossein Darvari <xhdix@yahoo.com>\n"
 "Language-Team: Persian (http://www.transifex.com/otf/torproject/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.8.0\n"
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#. -*- coding: utf-8 ; test-case-name: bridgedb.test.test_https_server -*-
+#. This file is part of BridgeDB, a Tor bridge distribution system.
+#. :authors: please see included AUTHORS file
+#. :copyright: (c) 2007-2017, The Tor Project, Inc.
+#. (c) 2013-2017, Isis Lovecruft
+#. :license: see LICENSE for licensing information
+#. : The path to the HTTPS distributor's web templates.  (Should be the
+#. : "templates" directory in the same directory as this file.)
+#. Setting `filesystem_checks` to False is recommended for production servers,
+#. due to potential speed increases. This means that the atimes of the Mako
+#. template files aren't rechecked every time the template is requested
+#. (otherwise, if they are checked, and the atime is newer, the template is
+#. recompiled). `collection_size` sets the number of compiled templates which
+#. are cached before the least recently used ones are removed. See:
+#. http://docs.makotemplates.org/en/latest/usage.html#using-templatelookup
+#. : A list of supported language tuples. Use getSortedLangList() to read this
+#. variable.
+#. We use our metrics singleton to keep track of BridgeDB metrics such as
+#. "number of failed HTTPS bridge requests."
+#. Convert all key/value pairs from bytes to str.
 #. TRANSLATORS: Please DO NOT translate the following words and/or phrases in
 #. any string (regardless of capitalization and/or punctuation):
 #. "BridgeDB"
 #. "pluggable transport"
 #. "pluggable transports"
-#. "obfs2"
-#. "obfs3"
-#. "scramblesuit"
-#. "fteproxy"
+#. "obfs4"
 #. "Tor"
 #. "Tor Browser"
-#: bridgedb/https/server.py:167
+#: bridgedb/distributors/https/server.py:154
 msgid "Sorry! Something went wrong with your request."
 msgstr "متاسفانه در رابطه با درخواست شما خطایی رخ داده است."
 
-#: bridgedb/https/templates/base.html:79
-msgid "Report a Bug"
-msgstr "گزارش یک باگ"
+#: bridgedb/distributors/https/templates/base.html:42
+msgid "Language"
+msgstr "زبان"
 
-#: bridgedb/https/templates/base.html:82
+#: bridgedb/distributors/https/templates/base.html:94
+msgid "Report a Bug"
+msgstr "گزارش اشکال در برنامه"
+
+#: bridgedb/distributors/https/templates/base.html:97
 msgid "Source Code"
 msgstr "کد منبع"
 
-#: bridgedb/https/templates/base.html:85
+#: bridgedb/distributors/https/templates/base.html:100
 msgid "Changelog"
 msgstr "لیست تغییرات"
 
-#: bridgedb/https/templates/base.html:88
-msgid "Contact"
-msgstr "تماس"
-
-#: bridgedb/https/templates/bridges.html:35
+#: bridgedb/distributors/https/templates/bridges.html:35
 msgid "Select All"
 msgstr "انتخاب همه"
 
-#: bridgedb/https/templates/bridges.html:40
+#: bridgedb/distributors/https/templates/bridges.html:40
 msgid "Show QRCode"
 msgstr "نمایش QRCode"
 
-#: bridgedb/https/templates/bridges.html:52
+#: bridgedb/distributors/https/templates/bridges.html:52
 msgid "QRCode for your bridge lines"
 msgstr "QRCode برای مسیرهای پل شما"
 
-#. TRANSLATORS: Please translate this into some silly way to say
-#. "There was a problem!" in your language. For example,
-#. for Italian, you might translate this into "Mama mia!",
-#. or for French: "Sacrebleu!". :)
-#: bridgedb/https/templates/bridges.html:67
-#: bridgedb/https/templates/bridges.html:125
-msgid "Uh oh, spaghettios!"
-msgstr "ای وای، متاسفیم!"
-
-#: bridgedb/https/templates/bridges.html:68
+#: bridgedb/distributors/https/templates/bridges.html:63
 msgid "It seems there was an error getting your QRCode."
 msgstr "به نظر می رسد در دریافت QRCode برای شما، خطا وجود داشت."
 
-#: bridgedb/https/templates/bridges.html:73
+#: bridgedb/distributors/https/templates/bridges.html:68
 msgid ""
 "This QRCode contains your bridge lines. Scan it with a QRCode reader to copy"
 " your bridge lines onto mobile and other devices."
 msgstr "این QRCode شامل مسیرهای پل شما می باشد. آن را با یک برنامه QRCodeخوان اسکن کنید تا بتوانید این مسیرهای پل را در موبایل و سایر دستگاه هایتان نیز کپی کنید."
 
-#: bridgedb/https/templates/bridges.html:131
+#: bridgedb/distributors/https/templates/bridges.html:110
+msgid "BridgeDB encountered an error."
+msgstr "BridgeDB با خطایی روبرو شد."
+
+#: bridgedb/distributors/https/templates/bridges.html:116
 msgid "There currently aren't any bridges available..."
 msgstr "هم‌اکنون هیچ پلی در دسترس نیست..."
 
-#: bridgedb/https/templates/bridges.html:132
+#: bridgedb/distributors/https/templates/bridges.html:118
+#: bridgedb/distributors/https/templates/bridges.html:122
 #, python-format
 msgid ""
 " Perhaps you should try %s going back %s and choosing a different bridge "
 "type!"
 msgstr " شاید نیاز باشد تا %sبه مرحله قبل برگردید%s و گونه‌ی پل دیگری را انتخاب کنید!"
 
-#: bridgedb/https/templates/index.html:11
+#: bridgedb/distributors/https/templates/index.html:11
 #, python-format
 msgid "Step %s1%s"
 msgstr "مرحله %s1%s"
 
-#: bridgedb/https/templates/index.html:13
+#: bridgedb/distributors/https/templates/index.html:13
 #, python-format
 msgid "Download %s Tor Browser %s"
-msgstr "دانلود %s مرورگر تور %s"
+msgstr "دانلود %s مرورگر Tor %s"
 
-#: bridgedb/https/templates/index.html:25
+#: bridgedb/distributors/https/templates/index.html:25
 #, python-format
 msgid "Step %s2%s"
 msgstr "مرحله %s2%s"
 
-#: bridgedb/https/templates/index.html:27
+#: bridgedb/distributors/https/templates/index.html:28
+#: bridgedb/distributors/https/templates/index.html:30
 #, python-format
 msgid "Get %s bridges %s"
 msgstr "دریافت %s پل‌ ها  %s"
 
-#: bridgedb/https/templates/index.html:36
+#: bridgedb/distributors/https/templates/index.html:40
 #, python-format
 msgid "Step %s3%s"
 msgstr "مرحله %s3%s"
 
-#: bridgedb/https/templates/index.html:38
+#: bridgedb/distributors/https/templates/index.html:43
+#: bridgedb/distributors/https/templates/index.html:47
 #, python-format
 msgid "Now %s add the bridges to Tor Browser %s"
-msgstr "اکنون، %s افزودن پل ها به مرورگر تور %s"
+msgstr "اکنون، %s افزودن پل ها به مرورگر Tor %s"
 
 #. TRANSLATORS: Please make sure the '%s' surrounding single letters at the
 #. beginning of words are present in your final translation. Thanks!
 #. (These are used to insert HTML5 underlining tags, to mark accesskeys
 #. for disabled users.)
-#: bridgedb/https/templates/options.html:38
+#: bridgedb/distributors/https/templates/options.html:42
 #, python-format
 msgid "%sJ%sust give me bridges!"
 msgstr "%sف%sقط پل ها را بمن بده!"
 
-#: bridgedb/https/templates/options.html:51
+#: bridgedb/distributors/https/templates/options.html:55
 msgid "Advanced Options"
-msgstr "گزینه‌های پیشرفته"
+msgstr "تنظیمات پیشرفته"
 
-#: bridgedb/https/templates/options.html:86
+#: bridgedb/distributors/https/templates/options.html:93
 msgid "No"
 msgstr "نه"
 
-#: bridgedb/https/templates/options.html:87
+#: bridgedb/distributors/https/templates/options.html:94
 msgid "none"
 msgstr "هیچ"
 
 #. TRANSLATORS: Please make sure the '%s' surrounding single letters at the
 #. beginning of words are present in your final translation. Thanks!
 #. TRANSLATORS: Translate "Yes!" as in "Yes! I do need IPv6 addresses."
-#: bridgedb/https/templates/options.html:124
+#: bridgedb/distributors/https/templates/options.html:131
 #, python-format
 msgid "%sY%ses!"
 msgstr "%sب%sله!"
@@ -167,69 +185,37 @@ msgstr "%sب%sله!"
 #. TRANSLATORS: Please make sure the '%s' surrounding single letters at the
 #. beginning of words are present in your final translation. Thanks!
 #. TRANSLATORS: Please do NOT translate the word "bridge"!
-#: bridgedb/https/templates/options.html:147
+#: bridgedb/distributors/https/templates/options.html:154
 #, python-format
 msgid "%sG%set Bridges"
 msgstr "%sد%sریافت پل‌ها"
 
-#: bridgedb/strings.py:43
-msgid "[This is an automated message; please do not reply.]"
-msgstr "[این یک پیام خودکار می‌باشد، لطفا پاسخ ندهید.]"
+#: bridgedb/strings.py:33
+msgid "[This is an automated email.]"
+msgstr "[این یک ایمیل خودکار می‌باشد.]"
 
-#: bridgedb/strings.py:45
+#: bridgedb/strings.py:35
 msgid "Here are your bridges:"
 msgstr "فهرست پل‌های شما:"
 
-#: bridgedb/strings.py:47
+#: bridgedb/strings.py:37
 #, python-format
 msgid ""
 "You have exceeded the rate limit. Please slow down! The minimum time between\n"
 "emails is %s hours. All further emails during this time period will be ignored."
 msgstr "شما از حد مجاز تجاوز نموده اید. لطفاً پشت سر هم ایمیل نفرستید. حداقل زمان بین\nارسال ایمیل ها، %s ساعت است. تمامی ایمیل های بعدی در این بازه‌ی زمانی، نادیده گرفته می شوند."
 
-#: bridgedb/strings.py:50
+#: bridgedb/strings.py:40
 msgid ""
-"COMMANDs: (combine COMMANDs to specify multiple options simultaneously)"
-msgstr "دستورات: (برای مشخص کردن چندین گزینه به طور همزمان، دستورات را با هم ترکیب کنید)"
-
-#. TRANSLATORS: Please DO NOT translate the word "BridgeDB".
-#: bridgedb/strings.py:53
-msgid "Welcome to BridgeDB!"
-msgstr "به BridgeDB خوش‌آمدید!"
-
-#. TRANSLATORS: Please DO NOT translate the words "transport" or "TYPE".
-#: bridgedb/strings.py:55
-msgid "Currently supported transport TYPEs:"
-msgstr "در حال حاضر، از این transport TYPE ها پشتیبانی می شود:"
-
-#: bridgedb/strings.py:56
-#, python-format
-msgid "Hey, %s!"
-msgstr "سلام،  %s!"
-
-#: bridgedb/strings.py:57
-msgid "Hello, friend!"
-msgstr "سلام دوست من!"
-
-#: bridgedb/strings.py:58 bridgedb/https/templates/base.html:90
-msgid "Public Keys"
-msgstr "کلیدهای عمومی"
-
-#. TRANSLATORS: This string will end up saying something like:
-#. "This email was generated with rainbows, unicorns, and sparkles
-#. for alice@example.com on Friday, 09 May, 2014 at 18:59:39."
-#: bridgedb/strings.py:62
-#, python-format
-msgid ""
-"This email was generated with rainbows, unicorns, and sparkles\n"
-"for %s on %s at %s."
-msgstr "این ایمیل به طور خودکار بوسیله rainbows، unicorns و sparkles \n برای%s بر  %s در  %s تولید شده است."
+"If these bridges are not what you need, reply to this email with one of\n"
+"the following commands in the message body:"
+msgstr "اگر این پل‌ها آن چیزی نیستند که شما نیاز دارید، با یکی از دستورات زیر در متن پیام، به این ایمیل پاسخ دهید:"
 
 #. TRANSLATORS: Please DO NOT translate "BridgeDB".
 #. TRANSLATORS: Please DO NOT translate "Pluggable Transports".
 #. TRANSLATORS: Please DO NOT translate "Tor".
 #. TRANSLATORS: Please DO NOT translate "Tor Network".
-#: bridgedb/strings.py:72
+#: bridgedb/strings.py:50
 #, python-format
 msgid ""
 "BridgeDB can provide bridges with several %stypes of Pluggable Transports%s,\n"
@@ -237,10 +223,10 @@ msgid ""
 "difficult for anyone watching your internet traffic to determine that you are\n"
 "using Tor.\n"
 "\n"
-msgstr "BridgeDB می تواند پل هایی با چندین %sنوع متعدد از Pluggable Transports%s فراهم کند،\n که کمک می کند اتصال شما به شبکه Tor تا حد امکان مبهم و ناشناس باقی بماند.\n با این کار، افرادی که بر ترافیک اینترنت شما نظارت می کنند، به سختی می توانند تشخیص دهند که شما به تور وصل شده اید.\n"
+msgstr "BridgeDB می تواند پل هایی با چندین %sنوع متعدد از Pluggable Transports%s فراهم کند،\n که کمک می کند اتصال شما به شبکه Tor تا حد امکان مبهم و ناشناس باقی بماند.\n با این کار، افرادی که بر ترافیک اینترنت شما نظارت می کنند، به سختی می توانند تشخیص دهند که شما به Tor وصل شده اید.\n"
 
 #. TRANSLATORS: Please DO NOT translate "Pluggable Transports".
-#: bridgedb/strings.py:79
+#: bridgedb/strings.py:57
 msgid ""
 "Some bridges with IPv6 addresses are also available, though some Pluggable\n"
 "Transports aren't IPv6 compatible.\n"
@@ -252,7 +238,7 @@ msgstr "بعضی از پل‌ها با آدرس‌های IPv6 نیز در دست
 #. regular, or unexciting". Like vanilla ice cream. It refers to bridges
 #. which do not have Pluggable Transports, and only speak the regular,
 #. boring Tor protocol. Translate it as you see fit. Have fun with it.
-#: bridgedb/strings.py:88
+#: bridgedb/strings.py:66
 #, python-format
 msgid ""
 "Additionally, BridgeDB has plenty of plain-ol'-vanilla bridges %s without any\n"
@@ -261,134 +247,169 @@ msgid ""
 "\n"
 msgstr "همچنین BridgeDB شامل تعداد زیادی پل های ابتدایی و قدیمی است که %s Pluggable Transports ندارند %s و ممکن است بی مصرف به نظر برسند اما همچنان ممکن است در موارد متعددی جهت دور زدن فیلترینگ به شما کمک کنند.\n"
 
-#: bridgedb/strings.py:101
+#: bridgedb/strings.py:78 bridgedb/test/test_https.py:356
 msgid "What are bridges?"
 msgstr "پل ها چه هستند؟"
 
-#: bridgedb/strings.py:102
+#: bridgedb/strings.py:79
 #, python-format
 msgid "%s Bridges %s are Tor relays that help you circumvent censorship."
-msgstr "%s پل ها %s هستند بازپخش کننده های تور هستند که به شما برای دور زدن سانسورکمک می کنند ."
+msgstr "%s پل ها %s هستند بازپخش کننده های Tor هستند که به شما برای دور زدن سانسور کمک می کنند ."
 
-#: bridgedb/strings.py:107
+#: bridgedb/strings.py:84
 msgid "I need an alternative way of getting bridges!"
 msgstr "به یک راه دیگر برای دریافت bridge ها احتیاج دارم!"
 
-#: bridgedb/strings.py:108
+#. TRANSLATORS: Please DO NOT translate "get transport obfs4".
+#: bridgedb/strings.py:86
 #, python-format
 msgid ""
-"Another way to get bridges is to send an email to %s. Please note that you must\n"
-"send the email using an address from one of the following email providers:\n"
-"%s, %s or %s."
-msgstr "یک طریق دیگری که میتوانید پلها را بگیرید, از طریق فزستادن یک ایمیل به %s  میباشد. لطفا دقت فر مایید که شما باید ایمیل خود را حتما از یکی از فراهمکنند گان ایمیلی زیر بفرستیذ:    %s   %s  و یا  %s  ."
+"Another way to get bridges is to send an email to %s. Leave the email subject\n"
+"empty and write \"get transport obfs4\" in the email's message body. Please note\n"
+"that you must send the email using an address from one of the following email\n"
+"providers: %s or %s."
+msgstr "یک راه دیگر برای دریافت پل ها، فرستادن ایمیل به %s است. \nعنوان را خالی بگذارید و در متن پیام \"get transport obfs4\" بنویسید. \nلطفا توجه داشته باشید که شما باید ایمیل را از طریق یکی از سرویس دهنده های \nایمیل %s یا %s ارسال کنید."
 
-#: bridgedb/strings.py:115
+#: bridgedb/strings.py:94
 msgid "My bridges don't work! I need help!"
 msgstr "به کمک احتیاج دارم! پل‌های من کار نمی‌کنند!"
 
-#. TRANSLATORS: Please DO NOT translate "Tor".
-#: bridgedb/strings.py:117
-#, python-format
-msgid "If your Tor doesn't work, you should email %s."
-msgstr "اگر تور شما کار نمی کند, شما باید ایمیل کنید %s."
-
-#. TRANSLATORS: Please DO NOT translate "Pluggable Transports".
 #. TRANSLATORS: Please DO NOT translate "Tor Browser".
-#. TRANSLATORS: Please DO NOT translate "Tor".
-#: bridgedb/strings.py:121
+#. TRANSLATORS: The two '%s' are substituted with "Tor Browser Manual" and
+#. "Support Portal", respectively.
+#: bridgedb/strings.py:98
+#, python-format
 msgid ""
-"Try including as much info about your case as you can, including the list of\n"
-"bridges and Pluggable Transports you tried to use, your Tor Browser version,\n"
-"and any messages which Tor gave out, etc."
-msgstr "سعی کنید تا می توانید اطلاعات بیشتری را فراهم کنید. از جمله لیست پل ها و Pluggable Transports هایی که استفاده کرده اید. همچنین شماره نسخه Tor Browser و هر پیغامی که Tor به شما داده است."
+"If your Tor Browser cannot connect, please take a look at the %s and our %s."
+msgstr "اگر مرورگر Tor شما قادر به اتصال نیست ، لطفاً به %s و %s ما نگاهی بیندازید."
 
-#: bridgedb/strings.py:128
+#: bridgedb/strings.py:102
 msgid "Here are your bridge lines:"
 msgstr "خطوط پل شما در اینجا:"
 
-#: bridgedb/strings.py:129
+#: bridgedb/strings.py:103
 msgid "Get Bridges!"
 msgstr "دریافت پل‌ها!"
 
-#: bridgedb/strings.py:133
+#: bridgedb/strings.py:107
+msgid "Bridge distribution mechanisms"
+msgstr "مکانیزم‌های توزیع Bridge"
+
+#. TRANSLATORS: Please DO NOT translate "BridgeDB", "HTTPS", and "Moat".
+#: bridgedb/strings.py:109
+#, python-format
+msgid ""
+"BridgeDB implements four mechanisms to distribute bridges: \"HTTPS\", \"Moat\",\n"
+"\"Email\", and \"Reserved\".  Bridges that are not distributed over BridgeDB use\n"
+"the pseudo-mechanism \"None\".  The following list briefly explains how these\n"
+"mechanisms work and our %sBridgeDB metrics%s visualize how popular each of the\n"
+"mechanisms is."
+msgstr "BridgeDB از چهار مکانیزم برای توزیع پل‌ها استفاده می‌کند: \"HTTPS\"، \"Moat،\n \"ایمیل\" و \"رزرو\". پل‌هایی که از طریق BridgeDB توزیع نمی‌شوند،\nاز شبه مکانیزم \"None\" استفاده می‌کنند. لیست زیر به صورت خلاصه توضیح می‌دهد\nکه هر کدام از این مکانیزم‌ها چطور کار می‌کنند و %sمعیارهای BridgeDB%s محبوبیت هرکدام\nاز مکانیزم‌ها را نشان می‌دهد."
+
+#: bridgedb/strings.py:115
+#, python-format
+msgid ""
+"The \"HTTPS\" distribution mechanism hands out bridges over this website.  To get\n"
+"bridges, go to %sbridges.torproject.org%s, select your preferred options, and\n"
+"solve the subsequent CAPTCHA."
+msgstr "مکانیزم توزیع \"HTTPS\" پل‌ها را از طریق این وبسایت ارائه می‌کند. برای \nدریافت پل‌ها به %sbridges.torproject.org%s رفته، گزینه‌ی مد نظر خود را انتخاب کرده و کد CAPTCHA را حل کنید."
+
+#: bridgedb/strings.py:119
+#, python-format
+msgid ""
+"The \"Moat\" distribution mechanism is part of Tor Browser, allowing users to\n"
+"request bridges from inside their Tor Browser settings.  To get bridges, go to\n"
+"your Tor Browser's %sTor settings%s, click on \"request a new bridge\", solve the\n"
+"subsequent CAPTCHA, and Tor Browser will automatically add your new\n"
+"bridges."
+msgstr "مکانیزم توزیع \"Moat\" بخشی از مرورگر تور است که به کاربران اجازه می‌دهد\nکه پل‌ها را از داخل تنظیمات مرورگر تور درخواست دهند. برای دریافت پل‌ها به\n%sتنظیمات تور%s مرورگر تور خود رفته، بر روی \"درخواست پل جدید\" کلیک و کد CAPTCHA\nرا حل کنید. مرورگر تور به صورت خودکار پل جدید را\nاضافه خواهد کرد."
+
+#: bridgedb/strings.py:125
+#, python-format
+msgid ""
+"Users can request bridges from the \"Email\" distribution mechanism by sending an\n"
+"email to %sbridges@torproject.org%s and writing \"get transport obfs4\" in the\n"
+"email body."
+msgstr "کاربران می‌توانند با مکانیزم توزیع \"ایمیل\" درخواست پل دهند. برای این کار به\n%sbridges@torproject.org%s ایمیل داده و به عنوان متن ایمیل عبارت\nget transport obfs4\" را بنویسید."
+
+#: bridgedb/strings.py:129
+msgid "Reserved"
+msgstr "رزرو شده"
+
+#: bridgedb/strings.py:130
+#, python-format
+msgid ""
+"BridgeDB maintains a small number of bridges that are not distributed\n"
+"automatically.  Instead, we reserve these bridges for manual distribution and\n"
+"hand them out to NGOs and other organizations and individuals that need\n"
+"bridges.  Bridges that are distributed over the \"Reserved\" mechanism may not\n"
+"see users for a long time.  Note that the \"Reserved\" distribution mechanism is\n"
+"called \"Unallocated\" in %sbridge pool assignment%s files."
+msgstr "BridgeDB شامل تعداد کمی از پل‌هایی است که به صورت خودکار توزیع نمی‌گردند.\nبلکه ما این پل‌ها را برای توزیع دستی رزرو کرده و\nتحویل NGOها و سایر نهادها و افرادی که نیاز به آن دارند\nمی‌دهیم. پل‌هایی که با مکانیزم \"رزرو\" توزیع می‌گردند ممکن است تا\nمدت طولانی استفاده نگردند. در نظر داشته باشید که مکانیز توزیع \"رزرو\" در فایل %sمخزن واگذاری پل%s با نام \"تخصیص نیافته\" شناخته می‌شود."
+
+#: bridgedb/strings.py:137
+msgid "None"
+msgstr "هیچ"
+
+#: bridgedb/strings.py:138
+msgid ""
+"Bridges whose distribution mechanism is \"None\" are not distributed by BridgeDB.\n"
+"It is the bridge operator's responsibility to distribute their bridges to\n"
+"users.  Note that on Relay Search, a freshly set up bridge's distribution\n"
+"mechanism says \"None\" for up to approximately one day.  Be a bit patient, and\n"
+"it will then change to the bridge's actual distribution mechanism.\n"
+msgstr "پل هایی که مکانیسم توزیع آنها \"هیچ\" است توسط BridgeDB توزیع نمی شوند.\nاین وظیفه اپراتور پل است که بتواند پل‌های خود را برای کاربران توزیع کند. توجه داشته باشید که در جستجوی رله، ساز‌و‌کار توزیع یک پل تازه نصب شده حداکثر تا حدود یک روز \"هیچ\" خواهد بود.\n کمی صبور باشید، وضعیت آن به ساز‌وکار توزیع واقعی پل تغییر خواهد کرد.\n"
+
+#: bridgedb/strings.py:148
 msgid "Please select options for bridge type:"
 msgstr "لطفا گزینه نوع پل را انتخاب کنید:"
 
-#: bridgedb/strings.py:134
+#: bridgedb/strings.py:149
 msgid "Do you need IPv6 addresses?"
 msgstr "آیا شما به آدرس های IPv6 نیاز دارید؟"
 
-#: bridgedb/strings.py:135
+#: bridgedb/strings.py:150
 #, python-format
 msgid "Do you need a %s?"
 msgstr "آیا شما نیاز دارید به یک %s؟"
 
-#: bridgedb/strings.py:139
+#: bridgedb/strings.py:154
 msgid "Your browser is not displaying images properly."
 msgstr "مرورگر شما تصاویر را به درستی نمایش نمی دهد."
 
-#: bridgedb/strings.py:140
+#: bridgedb/strings.py:155
 msgid "Enter the characters from the image above..."
 msgstr "کاراکتر ها را از تصویر بالا وارد کنید..."
 
-#: bridgedb/strings.py:144
+#: bridgedb/strings.py:159
 msgid "How to start using your bridges"
 msgstr "چگونگی از پل‌های خود استفاده کنید"
 
 #. TRANSLATORS: Please DO NOT translate "Tor Browser".
-#: bridgedb/strings.py:146
+#: bridgedb/strings.py:161
 #, python-format
 msgid ""
-"To enter bridges into Tor Browser, first go to the %s Tor Browser download\n"
-"page %s and then follow the instructions there for downloading and starting\n"
-"Tor Browser."
-msgstr "برای ورود به پل در مرورگر Tor ، برای اولین بار %s به دانلود مرورگر Tor \nصفحه %s و پس از آن به دنبال دستورالعمل  دانلود و استفاده از\nمرورگر Tor بروید."
+" First, you need to %sdownload Tor Browser%s. Our Tor Browser User\n"
+" Manual explains how you can add your bridges to Tor Browser. If you are\n"
+" using Windows, Linux, or OS X, %sclick here%s to learn more. If you\n"
+" are using Android, %sclick here%s."
+msgstr "ابتدا، شما نیاز به %sبارگیری مرور‌گر تور%s دارید. دفترچه راهنما مرورگر Tor ما، توضیح می‌دهد که چگونه می‌توانید پل‌های خود را به مرورگر Tor اضافه کنید\nاگر شما از ویندوز، لینوکس یا مک استفاده می‌کنید، برای اطلاعات بیشتر %s اینجا کلیک کنید%s. اگر شما   از اندروید استفاده می‌کتید،%sاینجا کلیک کنید%s."
 
-#. TRANSLATORS: Please DO NOT translate "Tor".
-#: bridgedb/strings.py:151
+#: bridgedb/strings.py:166
 msgid ""
-"When the 'Tor Network Settings' dialogue pops up, click 'Configure' and follow\n"
-"the wizard until it asks:"
-msgstr "وقتی که صفحه  'تنظیمات شبکه تور' نمایش داده شد, روی گزینه 'پیکربندی' کلیک کنید و دنبال کنید\nتا زمانی که wizard از شما بپرسد:"
+"Add these bridges to your Tor Browser by opening your browser\n"
+"preferences, clicking on \"Tor\", and then adding them to the \"Provide a\n"
+"bridge\" field."
+msgstr "این پل‌ها را به مرورگر تور خود، با باز کردن تنظیمات مرورگر، کلیک بر روی \"Tor\"، و سپس اضافه کردن آنها به بخش \"ارائه یک پل\"، اضافه کنید."
 
-#. TRANSLATORS: Please DO NOT translate "Tor".
-#: bridgedb/strings.py:155
-msgid ""
-"Does your Internet Service Provider (ISP) block or otherwise censor connections\n"
-"to the Tor network?"
-msgstr "آیا شرکت ارایه دهنده اینترنت (ISP) شما بلاک می کند و یا سانسور می کند ارتباطات\nشبکه تور شما را؟"
+#: bridgedb/strings.py:173
+msgid "(Request unobfuscated Tor bridges.)"
+msgstr "(درخواست پل‌های تور نا‌مبهم.)"
 
-#. TRANSLATORS: Please DO NOT translate "Tor".
-#: bridgedb/strings.py:159
-msgid ""
-"Select 'Yes' and then click 'Next'. To configure your new bridges, copy and\n"
-"paste the bridge lines into the text input box. Finally, click 'Connect', and\n"
-"you should be good to go! If you experience trouble, try clicking the 'Help'\n"
-"button in the 'Tor Network Settings' wizard for further assistance."
-msgstr "'بله' را انتخاب کرده و سپس 'بعدی' را انتخاب کنید. برای پیکربندی پل جدید خود, copy و paste کنید خطوط پل را در متن جعبه ورودی. در نهایت, روی 'اتصال' کلیک کنید,\nراه درستش این است! اگر مشکلی پیش آمد, کلیک کنید روی کلید 'راهنما'\nدر 'تنظیمات شبکه تور' wizard برای اطلاعات بیشتر."
-
-#: bridgedb/strings.py:167
-msgid "Displays this message."
-msgstr "این پیام را نمایش می‌دهد."
-
-#. TRANSLATORS: Please try to make it clear that "vanilla" here refers to the
-#. same non-Pluggable Transport bridges described above as being
-#. "plain-ol'-vanilla" bridges.
-#: bridgedb/strings.py:171
-msgid "Request vanilla bridges."
-msgstr "درخواست پل‌های عادی"
-
-#: bridgedb/strings.py:172
-msgid "Request IPv6 bridges."
-msgstr "درخواست پل‌های IPv6"
-
-#. TRANSLATORS: Please DO NOT translate the word the word "TYPE".
 #: bridgedb/strings.py:174
-msgid "Request a Pluggable Transport by TYPE."
-msgstr "درخواست یک روش Transport جایگزین براساس TYPE"
+msgid "(Request IPv6 bridges.)"
+msgstr "(درخواست پل‌های IPv6.)"
 
-#. TRANSLATORS: Please DO NOT translate "BridgeDB".
-#. TRANSLATORS: Please DO NOT translate "GnuPG".
-#: bridgedb/strings.py:177
-msgid "Get a copy of BridgeDB's public GnuPG key."
-msgstr "دریافت یک رونوشت از کلیدِ GnuPG عمومیِ BridgeDB"
+#: bridgedb/strings.py:175
+msgid "(Request obfs4 obfuscated bridges.)"
+msgstr "(درخواست پل‌های مبهم obfs4.)"
