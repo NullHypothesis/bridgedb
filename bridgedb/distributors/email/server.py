@@ -50,6 +50,7 @@ Servers which interface with clients and distribute bridges over SMTP.
 from __future__ import unicode_literals
 
 import email.message
+import email.policy
 import logging
 import io
 import socket
@@ -228,6 +229,18 @@ class SMTPMessage(object):
         if not self.ignoring:
             self.message = self.getIncomingMessage()
             self.responder.reply()
+
+        # Gmail's uses quoted-printable encoding when one responds to an email
+        # in the web interface.  The following block removes the
+        # quoted-printable part (if present) because it confuses our email
+        # parser.
+
+        if self.message.is_multipart():
+            for part in self.message.get_payload():
+                if part.get("Content-Transfer-Encoding") == "quoted-printable":
+                    continue
+                self.lines = part.get_payload().split("\n")
+
         return defer.succeed(None)
 
     def connectionLost(self):
@@ -242,7 +255,8 @@ class SMTPMessage(object):
         :returns: A ``Message`` comprised of all lines received thus far.
         """
 
-        return email.message_from_string('\n'.join(self.lines))
+        return email.message_from_string('\n'.join(self.lines),
+                                         policy=email.policy.compat32)
 
 
 @implementer(smtp.IMessageDelivery)
