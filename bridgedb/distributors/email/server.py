@@ -230,16 +230,18 @@ class SMTPMessage(object):
             self.message = self.getIncomingMessage()
             self.responder.reply()
 
-        # Gmail's uses quoted-printable encoding when one responds to an email
-        # in the web interface.  The following block removes the
-        # quoted-printable part (if present) because it confuses our email
-        # parser.
-
+        # If a user sends a multipart email, we only consider the part whose
+        # content type is text/plain.
         if self.message.is_multipart():
+            has_plaintext = False
             for part in self.message.get_payload():
-                if part.get("Content-Transfer-Encoding") == "quoted-printable":
+                if part.get_content_type() != "text/plain":
                     continue
                 self.lines = part.get_payload().split("\n")
+                has_plaintext = True
+
+            if not has_plaintext:
+                logging.warning("User email had no text/plain content type.")
 
         return defer.succeed(None)
 
