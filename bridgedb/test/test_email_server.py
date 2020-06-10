@@ -100,6 +100,69 @@ class SMTPMessageTests(unittest.TestCase):
         self.assertIsInstance(self.message.getIncomingMessage(),
                               email.message.Message)
 
+    def test_SMTPMessage_multipart1(self):
+        """`eomReceived` should get rid of HTML multiparts."""
+
+        # Gmail's web interface would send a message like this when replying to
+        # one of BridgeDB's emails.
+        multipartEmail = [
+        'MIME-Version: 1.0',
+        'Date: Mon, 1 Jun 2020 15:55:33 -0700',
+        'Subject: Re: test',
+        'From: Foo Bar <foo@bar.com>',
+        'To: bridges@bridges.torproject.org',
+        'Content-Type: multipart/alternative; boundary="00000000000041b34105a70db186"',
+        '',
+        '--00000000000041b34105a70db186',
+        'Content-Type: text/plain; charset="UTF-8"',
+        '',
+        'This is plaintext.',
+        '',
+        '--00000000000041b34105a70db186',
+        'Content-Type: text/html; charset="UTF-8"',
+        'Content-Transfer-Encoding: quoted-printable',
+        '',
+        'This is HTML.',
+        '',
+        '--00000000000041b34105a70db186--']
+
+        for line in multipartEmail:
+            self.message.lineReceived(line)
+        self.message.eomReceived()
+        content = "".join(self.message.lines)
+        self.assertTrue("This is plaintext." in content)
+        self.assertFalse("This is HTML." in content)
+
+    def test_SMTPMessage_multipart2(self):
+        """`eomReceived` should get rid of HTML multiparts."""
+
+        # Outlook would send a message like this when replying to one of
+        # BridgeDB's emails.
+        multipartEmail = [
+        'Content-Type: multipart/alternative;',
+        '              boundary="_000_VI1PR08MB4351A21D6C4A31C2B0FDA34F8CC10VI1PR08MB4351eurp_"',
+        '',
+        '--_000_VI1PR08MB4351A21D6C4A31C2B0FDA34F8CC10VI1PR08MB4351eurp_',
+        'Content-Type: text/plain; charset="us-ascii"',
+        'Content-Transfer-Encoding: quoted-printable',
+        '',
+        'This is plaintext.',
+        '',
+        '--_000_VI1PR08MB4351A21D6C4A31C2B0FDA34F8CC10VI1PR08MB4351eurp_',
+        'Content-Type: text/html; charset="us-ascii"',
+        'Content-Transfer-Encoding: quoted-printable',
+        '',
+        'This is HTML.',
+        '',
+        '--_000_VI1PR08MB4351A21D6C4A31C2B0FDA34F8CC10VI1PR08MB4351eurp_--']
+
+        for line in multipartEmail:
+            self.message.lineReceived(line)
+        self.message.eomReceived()
+        content = "".join(self.message.lines)
+        self.assertTrue("This is plaintext." in content)
+        self.assertFalse("This is HTML." in content)
+
 
 class SMTPIncomingDeliveryTests(unittest.TestCase):
     """Unittests for :class:`email.server.SMTPIncomingDelivery`."""
