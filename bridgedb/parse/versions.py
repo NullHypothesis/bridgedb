@@ -23,6 +23,10 @@ bridgedb.parse.versions
 ..
 """
 
+import logging
+
+import stem.version
+
 from twisted import version as _txversion
 
 # The twisted.python.util.Version class was moved in Twisted==14.0.0 to
@@ -127,3 +131,28 @@ class Version(_Version):
                str(self.minor),
                str(self.micro),
                str(prerelease))
+
+
+def parseVersionsList(versions_list):
+    """Turn the given version strings into stem objects.
+
+    :param list versions_list: A list of tuples. Each tuple contains a minimum
+        and maximum version number as strings.
+    :rtype: list
+    :returns: A list of tuples. Each tuple contains a minimum and maximum
+        version number as :class:`stem.version.Version` objects.
+    """
+    parsed = []
+    for v1, v2 in versions_list:
+        # We're dealing with an already-parsed version list.
+        if isinstance(v1, stem.version.Version):
+            return versions_list
+        try:
+            parsed.append(tuple([stem.version.Version(v1),
+                                 stem.version.Version(v2)]))
+        except ValueError:
+            logging.error("Couldn't parse BLACKLISTED_TOR_VERSIONS; "
+                          "probably because of badly formatted "
+                          "configuration file. Ignoring config option.")
+            return []
+    return parsed

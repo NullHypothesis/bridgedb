@@ -1825,3 +1825,18 @@ class Bridge(BridgeBackwardsCompatibility):
             logging.info("Removing dead transport for bridge %s: %s %s:%s %s" %
                          (self, pt.methodname, pt.address, pt.port, pt.arguments))
             self.transports.remove(pt)
+
+    def runsVersion(self, version_tuples):
+        """Return ``True`` if this bridge runs any of the given versions.
+
+        :param list version_tuples: A list of tuples that contain a minimum and
+            maximum version number (as :class:`stem.version.Version` objects),
+            each.
+        :rtype: bool
+        :returns: ``True`` if this bridge runs any of the given Tor versions
+            and ``False`` otherwise.
+        """
+        for min_version, max_version in version_tuples:
+            if min_version <= self.software <= max_version:
+                return True
+        return False

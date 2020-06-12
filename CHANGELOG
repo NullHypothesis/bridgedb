@@ -1,3 +1,8 @@
+    * FIXES https://bugs.torproject.org/29184
+    Add a new configuration option, BLACKLISTED_TOR_VERSIONS, which contains a
+    list of Tor versions.  BridgeDB won't hand out bridges whose Tor version
+    is present in this blacklist.
+
     * FIXES https://bugs.torproject.org/19774
     Add a favicon to BridgeDB's web UI.
 

@@ -19,6 +19,8 @@ import hashlib
 import os
 import warnings
 
+import stem.version
+
 from twisted.trial import unittest
 
 from bridgedb import bridges
@@ -1837,3 +1839,28 @@ class BridgeTests(unittest.TestCase):
         self.assertTrue(len(self.bridge.transports), 3)
         self.assertNotIn('scramblesuit',
                          [pt.methodname for pt in self.bridge.transports])
+
+    def test_runsVersions(self):
+        """Calling runsVersions() should tell us if a bridge is running any of
+        the given versions.
+        """
+        self.bridge.software = stem.version.Version("0.1.2.3")
+
+        t1 = tuple([stem.version.Version("0.1.2.3"),
+                    stem.version.Version("0.1.2.3")])
+        self.assertTrue(self.bridge.runsVersion([t1]))
+
+        t2 = tuple([stem.version.Version("0.1.2"),
+                    stem.version.Version("0.1.2")])
+        self.assertFalse(self.bridge.runsVersion([t2]))
+
+        t3 = tuple([stem.version.Version("0.1.2"),
+                    stem.version.Version("0.1.2.5")])
+        self.assertTrue(self.bridge.runsVersion([t3]))
+
+        t4 = tuple([stem.version.Version("0.2.2"),
+                    stem.version.Version("0.3.1")])
+        self.assertFalse(self.bridge.runsVersion([t4]))
+
+        self.assertTrue(self.bridge.runsVersion([t1, t2, t3, t4]))
+        self.assertFalse(self.bridge.runsVersion([t2, t4]))

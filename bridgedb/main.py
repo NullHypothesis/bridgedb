@@ -38,6 +38,7 @@ from bridgedb.distributors.https.distributor import HTTPSDistributor
 from bridgedb.distributors.moat.distributor import MoatDistributor
 from bridgedb.parse import descriptors
 from bridgedb.parse.blacklist import parseBridgeBlacklistFile
+from bridgedb.parse.versions import parseVersionsList
 
 import bridgedb.Storage
 
@@ -211,6 +212,10 @@ def load(state, hashring, clear=False):
             elif bridge in blacklist.keys():
                 logging.warn("Not distributing blacklisted Bridge %s %s:%s: %s" %
                              (bridge, bridge.address, bridge.orPort, blacklist[bridge]))
+            # Skip bridges that are running a blacklisted version of Tor.
+            elif bridge.runsVersion(state.BLACKLISTED_TOR_VERSIONS):
+                logging.warn("Not distributing bridge %s because it runs blacklisted "
+                             "Tor version %s." % (router.fingerprint, bridge.software))
             else:
                 # If the bridge is not running, then it is skipped during the
                 # insertion process.
@@ -417,6 +422,8 @@ def run(options, reactor=reactor):
             logging.info("Loading proxies from: %s" % proxyfile)
             proxy.loadProxiesFromFile(proxyfile, proxies, removeStale=True)
         metrics.setProxies(proxies)
+
+        state.BLACKLISTED_TOR_VERSIONS = parseVersionsList(state.BLACKLISTED_TOR_VERSIONS)
 
         logging.info("Reloading blacklisted request headers...")
         antibot.loadBlacklistedRequestHeaders(config.BLACKLISTED_REQUEST_HEADERS_FILE)
