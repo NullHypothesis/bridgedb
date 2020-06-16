@@ -1,3 +1,6 @@
+    * FIXES https://bugs.torproject.org/33647
+    Fix broken link in the README and fix our Makefile's pylint target.
+
     * FIXES https://bugs.torproject.org/19774
     Add a favicon to BridgeDB's web UI.
 
